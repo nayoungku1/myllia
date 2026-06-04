@@ -18,13 +18,29 @@ cd myllia
 
 ```
 
-### 2. Create and Activate a Conda Environment
+### 2. Environment Setup (One-step Sync)
 
-To avoid dependency conflicts, we recommend using a `conda` virtual environment. Create the environment using the provided `environment.yml` file:
+If you don't have `uv` installed, install it first:
+* **Linux / MacOS**: 
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+* **Windows**:
+```powershell
+powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+```
+
+Then, simply run the following command. It will automatically create a virtual environment, install the correct Python version, and sync all required dependencies (including `scanpy`, `scikit-learn`, etc.) based on the `uv.lock` file:
 
 ```bash
-conda env create -f environment.yml
-conda activate myllia
+uv sync
+
+```
+
+To activate the environment:
+
+```bash
+source .venv/bin/activate
 
 ```
 
